@@ -28,4 +28,4 @@ jobs:
     - name: Upload to blob storage
       uses: Azure/cli@v1.0.0
       with:
-        inlineScript: ls my-awesome-site && az storage blob upload-batch -d '$web' -s 'my-awesome-site/_site' --connection-string ${{ secrets.BLOB_CONNECTION_STRING }}
+        inlineScript: az storage blob upload-batch -d '$web' -s 'my-awesome-site/_site' --connection-string '${{ secrets.BLOB_CONNECTION_STRING }}'
