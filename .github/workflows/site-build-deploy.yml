@@ -25,3 +25,7 @@ jobs:
       run: bundle install
     - name: Build
       run: bundle exec jekyll build
+    - name: Upload to blob storage
+      uses: Azure/cli@v1.0.0
+      with:
+        inlineScript: az storage blob upload-batch -d $web -s _site --connection-string ${{ secrets.BLOB_CONNECTION_STRING }}
